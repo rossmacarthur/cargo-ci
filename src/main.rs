@@ -64,6 +64,12 @@ fn should_run(only: Option<&str>, skip: Option<Vec<&str>>) -> bool {
 }
 
 fn main() {
+    let mut args: Vec<_> = env::args().collect();
+
+    if args.len() > 1 && args[1] == "ci" {
+        args.remove(1);
+    }
+
     let matches = App::new(crate_name!())
         .author(crate_authors!())
         .about(crate_description!())
@@ -90,7 +96,7 @@ fn main() {
                 .conflicts_with("only")
                 .help("Skip running the given command if we are NOT using the specified version."),
         )
-        .get_matches();
+        .get_matches_from(&args);
 
     match matches.subcommand() {
         (subcommand, Some(submatches)) => {

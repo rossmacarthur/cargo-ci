@@ -1,0 +1,15 @@
+[package]
+name = "cargo-ci"
+version = "0.1.0"
+edition = "2018"
+authors = ["Ross MacArthur <ross@macarthur.io>"]
+description = "Manages running common CI tasks with Cargo."
+license = "Apache-2.0/MIT"
+repository = "https://github.com/rossmacarthur/cargo-ci"
+homepage = "https://github.com/rossmacarthur/cargo-ci"
+keywords = ["cargo", "cargo-subcommand", "travis", "ci"]
+readme = "README.md"
+
+[dependencies]
+ansi_term = "0.11.0"
+clap = "2.32.0"

@@ -1,6 +1,6 @@
 [package]
 name = "cargo-ci"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2018"
 authors = ["Ross MacArthur <ross@macarthur.io>"]
 description = "Manages running common CI tasks with Cargo."

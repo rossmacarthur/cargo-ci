@@ -1,6 +1,4 @@
-use std::env;
-use std::fmt::Display;
-use std::process;
+use std::{env, fmt::Display, process};
 
 use ansi_term::Colour;
 use clap::{crate_authors, crate_description, crate_name, crate_version, App, AppSettings, Arg};
@@ -67,6 +65,7 @@ fn main() {
     let mut args: Vec<_> = env::args().collect();
 
     if args.len() > 1 && args[1] == "ci" {
+        args[0] = args[0].replace("cargo-ci", "cargo ci");
         args.remove(1);
     }
 
@@ -84,7 +83,7 @@ fn main() {
                 .long("only")
                 .takes_value(true)
                 .value_name("version")
-                .help("Only run the given command if we are using the specified version."),
+                .help("Only run the command if we are using this version."),
         )
         .arg(
             Arg::with_name("skip")
@@ -94,7 +93,7 @@ fn main() {
                 .number_of_values(1)
                 .value_name("version")
                 .conflicts_with("only")
-                .help("Skip running the given command if we are NOT using the specified version."),
+                .help("Skip running the command if we are NOT using this version."),
         )
         .get_matches_from(&args);
 
